@@ -57,7 +57,7 @@ echo "tmpfs	/tmp	tmpfs	defaults,noatime,mode=1777	0	0" >> /mnt/etc/fstab
 
 echo "Enter new system"
 echo "--------------------------------------------------"
-arch-chroot /mnt "bash <(cat moridin.sh)"
+arch-chroot /mnt "bash <(curl -L -s https://raw.githubusercontent.com/madr/congenial-train/master/moridin.sh)"
 
 echo "Unmount all partitions"
 echo "--------------------------------------------------"
