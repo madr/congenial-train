@@ -25,8 +25,8 @@ passwd ay
 
 echo "Configure mkinitcpio with modules needed for the initrd image"
 echo "--------------------------------------------------"
-sed -i 's/MODULES=\((.+)\)/MODULES=\(ext4 \1\)/' /etc/mkinitcpio.conf
-sed -i 's/HOOKS=\((.+) filesystems (.+)\)/HOOKS=\(\1 encrypt lvm2 filesystems \2\)/' /etc/mkinitcpio.conf
+sed -i 's/MODULES=\((.*)\)/MODULES=\(ext4 \1\)/' /etc/mkinitcpio.conf
+sed -i 's/HOOKS=\((.*) filesystems (.*)\)/HOOKS=\(\1 encrypt lvm2 filesystems \2\)/' /etc/mkinitcpio.conf
 
 echo "Regenerate initrd image"
 echo "--------------------------------------------------"
