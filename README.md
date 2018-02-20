@@ -12,6 +12,7 @@ If a wifi only system...
 
 When an Internet connection is established, start install.
 
+    pacman -Sy
     yes | pacman -S git
     git clone https://github.com/madr/congenial-train.git
     cd congenial-train
