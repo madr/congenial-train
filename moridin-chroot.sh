@@ -25,8 +25,8 @@ passwd ay
 
 echo "Configure mkinitcpio with modules needed for the initrd image"
 echo "--------------------------------------------------"
-sed -i 's/MODULES=\((.*)\)/MODULES=\(ext4 \1\)/' /etc/mkinitcpio.conf
-sed -i 's/HOOKS=\((.*) filesystems (.*)\)/HOOKS=\(\1 encrypt lvm2 filesystems \2\)/' /etc/mkinitcpio.conf
+sed -i -r 's/MODULES=\((.*)\)/MODULES=\(ext4 \1\)/' /etc/mkinitcpio.conf
+sed -i -r 's/HOOKS=\((.*) filesystems (.*)\)/HOOKS=\(\1 encrypt lvm2 filesystems \2\)/' /etc/mkinitcpio.conf
 
 echo "Regenerate initrd image"
 echo "--------------------------------------------------"
@@ -35,5 +35,5 @@ mkinitcpio -p linux
 echo "Setup grub"
 echo "--------------------------------------------------"
 grub-install
-sed -i 's/GRUB_CMDLINE_LINUX=.+/GRUB_CMDLINE_LINUX="cryptdevice=\/dev\/sda3:luks:allow-discards"/' /etc/default/grub
+sed -i -r 's/GRUB_CMDLINE_LINUX=.+/GRUB_CMDLINE_LINUX="cryptdevice=\/dev\/sda3:luks:allow-discards"/' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
