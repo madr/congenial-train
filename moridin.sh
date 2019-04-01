@@ -43,6 +43,7 @@ echo "Sort Mirrors"
 echo "--------------------------------------------------"
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.backup
+pacman -S pacman-contrib
 rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
 
 echo "Install the system"
