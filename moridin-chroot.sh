@@ -1,7 +1,6 @@
 echo "Setup system clock"
 echo "--------------------------------------------------"
 ln -s /usr/share/zoneinfo/Europe/Stockholm /etc/localtime
-hwclock --systohc --utc
 
 echo "Set the hostname"
 echo "--------------------------------------------------"
@@ -9,9 +8,12 @@ echo "Moridin" > /etc/hostname
 
 echo "Update locale"
 echo "--------------------------------------------------"
-echo LANG=en_US.UTF-8 >> /etc/locale.conf
-echo LANGUAGE=en_US >> /etc/locale.conf
-echo LC_ALL=C >> /etc/locale.conf
+echo "LANG=en_US.UTF-8" >> /etc/locale.conf
+echo "LANGUAGE=en_US" >> /etc/locale.conf
+echo "LC_ALL=C" >> /etc/locale.conf
+echo "KEYMAP=sv-latin1" >> /etc/vconsole.conf
+sed -i 's/^#sv_SE/sv_SE/' /etc/locale.gen
+locale-gen
 
 echo "Set password for root"
 echo "--------------------------------------------------"
